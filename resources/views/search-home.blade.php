@@ -14,6 +14,7 @@
     <h4 class="container ps-5 mb-4" style="color: var(--second)">Search Result For: {{ request()->searchData }}</h4>
     <div class="container d-flex flex-wrap px-5 mb-5">
         @foreach ($data as $item)
+            @if(!(Auth::user()->id === $item->id))
             <div class="card mb-4 me-3" style="width: 18rem;">
                 <img src="/storage/user/{{ $item->profile_picture }}" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
                 <div class="card-body">
@@ -36,6 +37,7 @@
                     {{-- <a href="#"><img src="/image/thumb.png" class="thumb-button" alt="" style="height: 50px; width: auto"></a> --}}
                 </div>
             </div>
+            @endif
         @endforeach
     </div>
 

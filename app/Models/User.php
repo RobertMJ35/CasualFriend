@@ -37,12 +37,12 @@ class User extends Authenticatable
         // 'profile_picture' => 'image|mimes:jpeg,png,jpg',
     ];
 
-    // public static function getSearchData($query){
-    //     return User::where('hobby1' , 'like', '%'.$query.'%')
-    //     ->orWhere('hobby2' , 'like', '%'.$query.'%')
-    //     ->orWhere('hobby3' , 'like', '%'.$query.'%')
-    //     ->where('isVisible', 1)->get();
-    // }
+    public static function getSearchData($query){
+        return User::where('hobby1' , 'like', '%'.$query.'%')
+        ->orWhere('hobby2' , 'like', '%'.$query.'%')
+        ->orWhere('hobby3' , 'like', '%'.$query.'%')
+        ->where('isVisible', 1)->get();
+    }
 
     public function userAvatar(){
         return $this->hasMany(MyAvatar::class);

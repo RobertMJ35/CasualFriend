@@ -36,18 +36,18 @@
         <img src="/image/banner.png" alt="" style="width: 100%; height:auto; object-fit: fit">
     </div>
     <div class="container d-flex justify-content-center align-content-center">
-        <form action="" class="d-flex mt-4" method="">
+        <form action="/search" class="d-flex mt-4" method="get">
             <div class="input-group mb-3" style="width: 1225px">
-                <input type="text" class="form-control" placeholder="@lang('home.search-placeholder')" aria-label="" aria-describedby="search-button">
-                <button class="search-button" type="button" id="search-button">@lang('home.search')</button>
+                <input type="text" name="searchData" class="form-control" placeholder="@lang('home.search-placeholder')" aria-label="" aria-describedby="search-button">
+                <button class="search-button" type="submit" id="search-button">@lang('home.search')</button>
             </div>
         </form>
     </div>
     <div class="container d-flex justify-content-start px-5 py-3">
         <div>
-            <a href="/" class="tag-gender me-3 {{ Request::is("/")? "active-tag" : "" }}">@lang('home.gender-all')</a>
-            <a href="/Male" class="tag-gender me-3 {{ Request::is("Male")? "active-tag" : "" }}">@lang('home.gender-1')</a>
-            <a href="/Female" class="tag-gender me-3 {{ Request::is("Female")? "active-tag" : "" }}">@lang('home.gender-2')</a>
+            <a href="/board/" class="tag-gender me-3 {{ Request::is("/")? "active-tag" : "" }}">@lang('home.gender-all')</a>
+            <a href="/board/Male" class="tag-gender me-3 {{ Request::is("board/Male")? "active-tag" : "" }}">@lang('home.gender-1')</a>
+            <a href="/board/Female" class="tag-gender me-3 {{ Request::is("board/Female")? "active-tag" : "" }}">@lang('home.gender-2')</a>
         </div>
         {{-- <div>
             <a href="/home/" class="tag-category me-3">Sports</a>

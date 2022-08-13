@@ -46,10 +46,16 @@ class Controller extends BaseController
         return view('home', ['user'=>$user]);
     }
 
-    // public function search(Request $req){
-    //     $this->setLang();
-    //     $data = User::getSearchData($req->searchData);
-    //     return view('search', ['data'=>$data]);
-    // }
+    public function search(Request $req){
+        $this->setLang();
+        $data = User::getSearchData($req->searchData);
+        return view('search', ['data'=>$data]);
+    }
+
+    public function searchHome(Request $req){
+        $this->setLang();
+        $data = User::getSearchData($req->searchData);
+        return view('search-home', ['data'=>$data]);
+    }
 }
 
