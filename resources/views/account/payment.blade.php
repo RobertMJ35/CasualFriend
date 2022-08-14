@@ -41,13 +41,14 @@
             <h2 class="fw-bolder pb-4" style="color: var(--sLight)">@lang('account.register-title')</h2>
         </div>
         <div class="container" style="width: 800px; background-color: var(--white); padding:0% 5% 0% 5%; border-radius: 40px;">
-            <form style="color: var(--black);" action="{{ route('payment') }}" method="post">
+            <form style="color: var(--black);" action="/payment/{{ request()->id }}" method="post">
                 @csrf
-                <h4 class="ps-3">Payment Amount: {{ $data['price'] }}</h4>
+                <input type="hidden" name="id" value="{{ request()->id }}">
                 <input type="hidden" name="bill" value="{{ $data['price'] }}">
 
                 <h1 class="text-center pt-5 pb-3">@lang('account.pay')</h1>
                 <div class="form-outline mb-4">
+                    <h4 class="pb-2">Payment Amount: {{ $data['price'] }}</h4>
                     {{-- <label class="form-label" for="form-login-1">@lang('account.pay')</label> --}}
                     <input type="number" name="payment" id="form-login-1" class="form-control" placeholder="@lang('account.payment-placeholder')" value={{ old('payment') }}>
                 </div>

@@ -30,8 +30,8 @@ Route::post('/register/auth', [UserController::class, "registerProcess"])->name(
 Route::get('/register/profile', [UserController::class, "profile"]);
 Route::post('/register/profile/val', [UserController::class, "profileProcess"])->name('profile');
 
-Route::get('/register/payment', [UserController::class, "payment"]);
-Route::post('/register/payment/process', [UserController::class, "paymentProcess"])->name('payment');
+Route::get('/register/payment/{id}', [UserController::class, "payment"])->name('payment_page');
+Route::post('/register/payment/{id}', [UserController::class, "paymentProcess"])->name('payment');
 
 Route::get('/logout', [UserController::class, "logout"])->name('logout');
 
@@ -53,17 +53,9 @@ Route::get('/chat', function(){
     return view('chat');
 });
 
-Route::get('/friend', function(){
-    return view('friend');
-});
-
 Route::get('/avatar', function(){
     return view('avatar');
 });
-
-// Route::get('/setting', function(){
-//     return view('setting');
-// });
 
 Route::get('/lang/{locale}', function ($locale) {
     session()->put('locale', $locale);

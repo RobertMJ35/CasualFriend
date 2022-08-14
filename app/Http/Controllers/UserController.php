@@ -96,19 +96,40 @@ class UserController extends Controller
         $user->isPay = 0;
         $user->save();
 
-        $data = ['price' => $request->register_price];
-        session(['data' => $data]);
+        // $data = ['price' => $request->register_price];
+        // session(['data' => $data]);
+        $userId = $user->id;
 
         // return redirect()->route('login_page')->withSucess('Registed Successfully');
-        return redirect('register/payment')->with(['data' => $data]);
+        // return redirect("register/payment/$userId")->with(['data' => $data]);
+        return redirect("register/payment/$userId");
     }
 
     public function paymentProcess(Request $request)
     {
         $this->setLang();
         $request->validate([
-            'payment' => 'required|min:100000'
+            'payment' => 'required'
         ]);
+
+        $user = User::find($request->id);
+        $id = $user->id;
+        $bill = $request->bill;
+
+        if($bill==$request->payment){
+            $user->isPay = 1;
+            $user->isVisible = 1;
+            $user->save();
+        }
+        elseif($bill<$request->payment){
+            $user->coin += $request->payment - $bill;
+            $user->isPay = 1;
+            $user->isVisible = 1;
+            $user->save();
+        }
+        else{
+            redirect('back')->withError("Payment must be equal of greater than '$bill'");
+        }
 
         return redirect()->route('login_page')->withSucess('Registed Successfully');
     }
