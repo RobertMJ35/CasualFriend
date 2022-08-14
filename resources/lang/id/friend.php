@@ -9,5 +9,6 @@
         'hobby' => 'Hobi',
         'accept' => 'TERIMA',
         'reject' => 'TOLAK',
+        'empty' => 'Belum Ada Teman',
     ];
 ?>

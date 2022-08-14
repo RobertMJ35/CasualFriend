@@ -16,11 +16,11 @@ class Friend extends Model
 
     use HasFactory;
 
-    public function person1(){
+    public function persons1(){
         return $this->belongsTo(User::class, 'person1', 'id');
     }
 
-    public function person2(){
+    public function persons2(){
         return $this->belongsTo(User::class, 'person2', 'id');
     }
 }

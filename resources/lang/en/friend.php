@@ -9,5 +9,6 @@
         'hobby' => 'Hobby',
         'accept' => 'ACCEPT',
         'reject' => 'REJECT',
+        'empty' => 'No Friend Yet',
     ];
 ?>

@@ -45,9 +45,10 @@ Route::get('/setting/topup', [UserController::class, "addCoin"]);
 Route::get('/setting/hide', [UserController::class, "hide"]);
 Route::get('/setting/unhide', [UserController::class, "unhide"]);
 
-
 Route::get('/friend', [FriendController::class, "friendPage"])->name('friend');
 Route::get('/friend/{id}', [FriendController::class, "sendFriendReq"]);
+Route::get('/friend/acc/{id}', [FriendController::class, "acceptFriendReq"]);
+Route::get('/friend/rej/{id}', [FriendController::class, "rejectFriendReq"]);
 
 Route::get('/chat', function(){
     return view('chat');

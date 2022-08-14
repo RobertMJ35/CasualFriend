@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chat;
 use App\Models\Friend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +23,8 @@ class FriendController extends Controller
         $this->setLang();
         // $friend = DB::table('users')
         //             ->join('friend', 'users.id', '=', 'friend.person1');
-        $friend = Friend::all();
-        return view('friend', ['friend'=>$friend]);
+        $list = Friend::all();
+        return view('friend', ['list'=>$list]);
     }
 
     public function sendFriendReq(Request $request){
@@ -38,9 +39,22 @@ class FriendController extends Controller
 
     public function acceptFriendReq(Request $request){
         Friend::find($request->id)->update([
-            'isFriend' => 1
+            'isFriends' => 1
         ]);
 
         return redirect()->back()->withToastSuccess('Friend Request Accepted!');
+    }
+
+    public function rejectFriendReq(Request $request){
+        Friend::find($request->id)->delete();
+
+        return redirect()->back()->withToastSuccess('Friend Request Rejected!');
+    }
+
+    public function createChat(Request $request){
+        Chat::create([
+            'person1' => Auth::user()->id,
+            'person2' => $request->user_id,
+        ]);
     }
 }
