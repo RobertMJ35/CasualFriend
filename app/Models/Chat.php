@@ -9,17 +9,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Chat extends Model
 {
+    protected $fillable = [
+        'person1',
+        'person2',
+    ];
+
     use HasFactory;
 
     public function chatDetail(){
         return $this->hasMany(ChatDetail::class);
     }
 
-    public function person1(){
+    public function persons1(){
         return $this->belongsTo(User::class, 'person1', 'id');
     }
 
-    public function person2(){
+    public function persons2(){
         return $this->belongsTo(User::class, 'person2', 'id');
     }
 }

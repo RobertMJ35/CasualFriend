@@ -21,7 +21,7 @@
                             <div class="card-title d-flex justify-content-between">
                                 <h5>{{ $item->persons2->name }}</h5>
                                 <div class="thumb-border">
-                                    <a href="/"><i class="bi bi-chat-dots-fill"></i></a>
+                                    <a href="/friend/chat/{{ $item->person2 }}"><i class="bi bi-chat-dots-fill"></i></a>
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -44,7 +44,7 @@
                             <div class="card-title d-flex justify-content-between">
                                 <h5>{{ $item->persons1->name }}</h5>
                                 <div class="thumb-border">
-                                    <a href="/"><i class="bi bi-chat-dots-fill"></i></a>
+                                    <a href="/friend/chat/{{ $item->person1 }}"><i class="bi bi-chat-dots-fill"></i></a>
                                 </div>
                             </div>
                             <div class="d-flex">

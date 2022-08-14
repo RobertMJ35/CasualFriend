@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FriendController;
 
@@ -49,10 +50,15 @@ Route::get('/friend', [FriendController::class, "friendPage"])->name('friend');
 Route::get('/friend/{id}', [FriendController::class, "sendFriendReq"]);
 Route::get('/friend/acc/{id}', [FriendController::class, "acceptFriendReq"]);
 Route::get('/friend/rej/{id}', [FriendController::class, "rejectFriendReq"]);
+Route::get('/friend/chat/{id}', [FriendController::class, "createChat"]);
 
-Route::get('/chat', function(){
-    return view('chat');
-});
+Route::get('/chat', [ChatController::class, "chatPage"])->name('chat');
+Route::get('/chats/{id}', [ChatController::class, "chatDetail"]);
+Route::post('/chats/send', [ChatController::class, "sendMessage"]);
+
+// Route::get('/chat', function(){
+//     return view('chat');
+// });
 
 Route::get('/avatar', function(){
     return view('avatar');

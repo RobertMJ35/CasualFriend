@@ -54,7 +54,9 @@ class FriendController extends Controller
     public function createChat(Request $request){
         Chat::create([
             'person1' => Auth::user()->id,
-            'person2' => $request->user_id,
+            'person2' => $request->id,
         ]);
+
+        return redirect()->route('friend')->withToastSuccess('Chat Room Created!');
     }
 }
