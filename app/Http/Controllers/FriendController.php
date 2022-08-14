@@ -20,7 +20,7 @@ class FriendController extends Controller
         Friend::create([
             'person1' => Auth::user()->id,
             'person2' => $request->id,
-            'isFriends' => false
+            'isFriends' => 0,
         ]);
 
         return redirect()->route('home')->withSuccess('Friend Request Sent!');
@@ -28,7 +28,7 @@ class FriendController extends Controller
 
     public function acceptFriendReq(Request $request){
         Friend::find($request->id)->update([
-            'isFriend' => true
+            'isFriend' => 1
         ]);
 
         return redirect()->back()->withSuccess('Friend Request Accepted!');

@@ -47,6 +47,7 @@ class Controller extends BaseController
         return view('home', ['user'=>$user]);
     }
 
+    // SETTING
     public function setting(){
         $this->setLang();
         $user = User::find(Auth::user()->id);
@@ -54,29 +55,7 @@ class Controller extends BaseController
         return view('setting', ['user'=>$user]);
     }
 
-    public function addCoin(){
-        $this->setLang();
-        $user = User::find(Auth::user()->id);
-        $user->coin += 100;
-        $user->save();
-
-        return redirect('setting');
-    }
-
-    public function saveChanges(Request $req){
-        $this->setLang();
-        $user = User::find(Auth::user()->id);
-        if($req->instagram != null){
-            $user->instagram = $req->instagram;
-        }
-        if($req->profile_picture != null){
-            $user->profile_picture = $req->profile_picture;
-        }
-        $user->save();
-
-        return redirect('setting')->withSuccess('Updated Successfully');
-    }
-
+    //SEARCH
     public function search(Request $req){
         $this->setLang();
         $data = User::getSearchData($req->searchData);

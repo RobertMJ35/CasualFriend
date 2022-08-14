@@ -39,8 +39,10 @@ Route::get('/home/{gender?}', [Controller::class, "homePage"]);
 Route::get('/home/search', [Controller::class, "searchHome"]);
 
 Route::get('/setting', [Controller::class, "setting"])->name('setting');
-Route::post('/setting/save', [Controller::class, "saveChanges"]);
-Route::get('/setting/topup', [Controller::class, "addCoin"]);
+Route::post('/setting/save', [UserController::class, "saveChanges"]);
+Route::get('/setting/topup', [UserController::class, "addCoin"]);
+Route::get('/setting/hide', [UserController::class, "hide"]);
+Route::get('/setting/unhide', [UserController::class, "unhide"]);
 
 
 Route::get('/friend', [FriendController::class, "friendPage"])->name('friend');

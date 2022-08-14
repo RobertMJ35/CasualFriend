@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'gender' => $dummy->randomElement(['Male', 'Female']),
                 'age' => $dummy->numberBetween(20, 50),
-                'coin' => $dummy->numberBetween(100, 1000),
+                'coin' => $dummy->numberBetween(100, 150),
                 'hobby1' => $dummy->randomElement(['Sports', 'Culinary']),
                 'hobby2' => $dummy->randomElement(['Gaming', 'Reading']),
                 'hobby3' => $dummy->randomElement(['Music', 'Drawing']),
@@ -35,8 +35,8 @@ class DatabaseSeeder extends Seeder
                 'location' => $dummy->randomElement(['Indonesia', 'Korea', 'Japan']),
                 'profile_picture' => 'profile1.jpg',
                 'register_price' => $dummy->numberBetween(100000, 125000),
-                'isVisible' => true,
-                'isPay' => true,
+                'isVisible' => 1,
+                'isPay' => 1,
             ]);
         }
     }

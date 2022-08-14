@@ -16,14 +16,17 @@
             <div class="hide-me px-3 py-2 w-50 ms-5 d-flex justify-content-between">
                 <div class="owned-coins">
                     <h6 class="mb-1">@lang('setting.my-status'):</h6>
-                    @if ($user->isVisible === 0)
+                    @if ($user->isVisible == 1)
                         <h5 class="mb-0 ps-3">Visible</h5>
                     @else
                         <h5 class="mb-0 ps-3">Invisible</h5>
                     @endif
                 </div>
-                <a href="/setting" class="hide-button p-2">Hide Me</a>
-                {{-- <a href="/setting" class="hide-button p-2">Unhide Me</a> --}}
+                @if ($user->isVisible == 1)
+                    <a href="/setting/hide" class="hide-button p-2">Hide Me</a>
+                @else
+                    <a href="/setting/unhide" class="hide-button p-2">Unhide Me</a>
+                @endif
             </div>
         </div>
 

@@ -92,8 +92,8 @@ class UserController extends Controller
         $user->location = $request->location;
         $user->profile_picture = $request->profile_picture;
         $user->register_price = $request->register_price;
-        $user->isVisible = false;
-        $user->isPay =  false;
+        $user->isVisible = 0;
+        $user->isPay = 0;
         $user->save();
 
         // $price = $request->register_price;
@@ -133,5 +133,48 @@ class UserController extends Controller
     {
         auth()->logout();
         return redirect()->route('boarding')->withSuccess('Logged Out Successfully');
+    }
+
+    public function addCoin(){
+        $this->setLang();
+        $user = User::find(Auth::user()->id);
+        $user->coin += 100;
+        $user->save();
+
+        return redirect('setting')->withSuccess('Top Up Successfully');;
+    }
+
+    public function hide(){
+        $this->setLang();
+        $user = User::find(Auth::user()->id);
+        $user->isVisible = 0;
+        $user->coin -= 50;
+        $user->save();
+
+        return redirect('setting')->withSuccess('Now, You are Invisible');;
+    }
+
+    public function unhide(){
+        $this->setLang();
+        $user = User::find(Auth::user()->id);
+        $user->isVisible = 1;
+        $user->coin -= 5;
+        $user->save();
+
+        return redirect('setting')->withSuccess('Now, You are Visible');
+    }
+
+    public function saveChanges(Request $req){
+        $this->setLang();
+        $user = User::find(Auth::user()->id);
+        if($req->instagram != null){
+            $user->instagram = $req->instagram;
+        }
+        if($req->profile_picture != null){
+            $user->profile_picture = $req->profile_picture;
+        }
+        $user->save();
+
+        return redirect('setting')->withSuccess('Updated Successfully');
     }
 }
