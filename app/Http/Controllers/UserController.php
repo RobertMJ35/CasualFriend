@@ -99,7 +99,7 @@ class UserController extends Controller
         // $price = $request->register_price;
         // session(['price' => $price]);
 
-        return redirect()->route('login_page')->withSucess('Registed Successfully');
+        return redirect()->route('login_page')->withToastSucess('Registed Successfully');
         // return redirect('register/payment');
     }
 
@@ -110,7 +110,7 @@ class UserController extends Controller
             'payment' => 'required|min:100000'
         ]);
 
-        return redirect()->route('login_page')->withSucess('Registed Successfully');
+        return redirect()->route('login_page')->withToastSucess('Registed Successfully');
     }
 
     public function loginProcess(Request $request)
@@ -132,7 +132,7 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         auth()->logout();
-        return redirect()->route('boarding')->withSuccess('Logged Out Successfully');
+        return redirect()->route('boarding')->withToastSuccess('Logged Out Successfully');
     }
 
     public function addCoin(){
@@ -141,7 +141,7 @@ class UserController extends Controller
         $user->coin += 100;
         $user->save();
 
-        return redirect('setting')->withSuccess('Top Up Successfully');;
+        return redirect('setting')->withToastSuccess('Top Up Successfully');;
     }
 
     public function hide(){
@@ -151,7 +151,7 @@ class UserController extends Controller
         $user->coin -= 50;
         $user->save();
 
-        return redirect('setting')->withSuccess('Now, You are Invisible');;
+        return redirect('setting')->withToastSuccess('Now, You are Invisible');;
     }
 
     public function unhide(){
@@ -161,7 +161,7 @@ class UserController extends Controller
         $user->coin -= 5;
         $user->save();
 
-        return redirect('setting')->withSuccess('Now, You are Visible');
+        return redirect('setting')->withToastSuccess('Now, You are Visible');
     }
 
     public function saveChanges(Request $req){
@@ -175,6 +175,6 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect('setting')->withSuccess('Updated Successfully');
+        return redirect('setting')->withToastSuccess('Updated Successfully');
     }
 }
