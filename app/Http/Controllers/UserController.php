@@ -34,6 +34,12 @@ class UserController extends Controller
         return view('account.profile');
     }
 
+    public function payment()
+    {
+        $this->setLang();
+        return view('account.payment');
+    }
+
     public function registerProcess(Request $request)
     {
         $this->setLang();
@@ -50,8 +56,8 @@ class UserController extends Controller
         $data = ['name' => $request->name, 'email' => $request->email, 'password' => $request->password, 'price' => rand(100000, 125000)];
         session(['data' => $data]);
 
-        return redirect('register/profile');
-        // return redirect('register/profile')->with(["data" => $data]);
+        // return redirect('register/profile');
+        return redirect('register/profile')->with(["data" => $data]);
     }
 
     public function profileProcess(Request $request)
@@ -85,9 +91,24 @@ class UserController extends Controller
         $user->language = $request->language;
         $user->location = $request->location;
         $user->profile_picture = $request->profile_picture;
-        $user->register_price = rand(100000, 125000);
-        $user->isVisible = true;
+        $user->register_price = $request->register_price;
+        $user->isVisible = false;
+        $user->isPay =  false;
         $user->save();
+
+        // $price = $request->register_price;
+        // session(['price' => $price]);
+
+        return redirect()->route('login_page')->withSucess('Registed Successfully');
+        // return redirect('register/payment');
+    }
+
+    public function paymentProcess(Request $request)
+    {
+        $this->setLang();
+        $request->validate([
+            'payment' => 'required|min:100000'
+        ]);
 
         return redirect()->route('login_page')->withSucess('Registed Successfully');
     }
@@ -98,10 +119,6 @@ class UserController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required|min:8',
-        ],[
-            'required' => trans('validation.required'),
-            'dns' => trans('validation.email'),
-            'min' => trans('validation.min.string'),
         ]);
 
         if(Auth::attempt($credentials)){

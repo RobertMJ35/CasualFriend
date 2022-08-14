@@ -29,13 +29,14 @@ class DatabaseSeeder extends Seeder
                 'hobby1' => $dummy->randomElement(['Sports', 'Culinary']),
                 'hobby2' => $dummy->randomElement(['Gaming', 'Reading']),
                 'hobby3' => $dummy->randomElement(['Music', 'Drawing']),
-                'instagram' => 'http://www.instagram.com/username',
+                'instagram' => 'https://www.instagram.com/username',
                 'mobile_number' => $dummy->phoneNumber(),
                 'language' => $dummy->randomElement(['Indonesia', 'English']),
                 'location' => $dummy->randomElement(['Indonesia', 'Korea', 'Japan']),
                 'profile_picture' => 'profile1.jpg',
                 'register_price' => $dummy->numberBetween(100000, 125000),
                 'isVisible' => true,
+                'isPay' => true,
             ]);
         }
     }

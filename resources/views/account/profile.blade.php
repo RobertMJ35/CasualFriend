@@ -4,7 +4,7 @@
 
 @extends('template')
 
-@section('title','Register')
+@section('title','Profile')
 
 @section('content')
     <div class="modal fade" id="lang-popup" tabindex="-1" aria-labelledby="" aria-hidden="true">
@@ -46,12 +46,13 @@
                 <input type="hidden" name="name" value="{{ $data['name'] }}">
                 <input type="hidden" name="email" value="{{ $data['email'] }}">
                 <input type="hidden" name="password" value="{{ $data['password'] }}">
+                <input type="hidden" name="register_price" value="{{ $data['price'] }}">
 
                 {{-- profile picture --}}
                 <div class="form-outline mb-4">
                     <label class="form-label" for="profilePicture">@lang('account.profile-picture')</label>
                     <div class="d-flex justify-content-center my-2">
-                        <img class="profile-preview" id="profile-preview"/>
+                        <img class="profile-preview" id="profile-preview">
                     </div>
                     <input class="form-control" type="file" onchange="profilePreview(event)" id="profilePicture" name="profile_picture" accept="image/*">
                 </div>
@@ -125,7 +126,7 @@
 
                 {{-- Submit button --}}
                 <div class="text-center py-5">
-                    <button type="submit" class="primary-button">@lang('account.register')</button>
+                    <button type="submit" class="primary-button" href="/register/payment">@lang('account.register')</button>
                 </div>
             </form>
         </div>

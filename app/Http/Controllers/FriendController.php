@@ -13,29 +13,23 @@ class FriendController extends Controller
     {
         $this->setLang();
         $friend = Friend::all();
-        return view('friend', ['friend' => $friend]);
+        return view('friend', ['friend'=>$friend]);
     }
 
     public function sendFriendReq(Request $request){
         Friend::create([
             'person1' => Auth::user()->id,
-            'person2' => $request->user_id,
-            'isFriend' => false
+            'person2' => $request->id,
+            'isFriends' => false
         ]);
 
-        return redirect()->back()->withSuccess('Friend Request Sent!');
+        return redirect()->route('home')->withSuccess('Friend Request Sent!');
     }
 
     public function acceptFriendReq(Request $request){
-        Friend::find($request->friend_id)->update([
+        Friend::find($request->id)->update([
             'isFriend' => true
         ]);
-
-        //bikin room
-        // ChatRoom::create([
-        //     'friend_1' => $request->user_id,
-        //     'friend_2' => Auth::user()->id,
-        // ]);
 
         return redirect()->back()->withSuccess('Friend Request Accepted!');
     }

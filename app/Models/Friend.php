@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Friend extends Model
 {
+    protected $fillable = [
+        'person1',
+        'person2',
+        'isFriends',
+    ];
+
     use HasFactory;
 
     public function person1(){

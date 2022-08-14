@@ -6,132 +6,29 @@
     <h2 class="container ps-3 pt-4 pb-2" style="color: var(--second)">Friend List</h2>
     <div class="container friend-list d-flex justify-content-center px-5 mb-5">
         <div class="scroll-friend d-flex">
-            <div class="card mb-2 mx-2" style="min-width: 18rem;">
-                <img src="/storage/user/profile1.jpg" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Jeremy Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
+            @foreach ($friend as $item)
+                <div class="card mb-2 me-2" style="min-width: 18rem;">
+                    <img src="/storage/user/profile1.jpg" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
+                    <div class="card-body">
+                        <div class="card-title d-flex justify-content-between">
+                            <h5>Jeremy Tyson</h5>
+                            <div class="thumb-border">
+                                <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
+                            <p class="card-text">Male, 22</p>
+                        </div>
+                        <label class="card-label mb-2">@lang('home.hobby'):</label>
+                        <div class="d-flex">
+                            <p class="card-category1">Sports</p>
+                            <p class="card-category2 mx-3">Culinary</p>
+                            <p class="card-category3">Reading</p>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Male, 22</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
                 </div>
-            </div>
-            <div class="card mb-2 me-2" style="min-width: 18rem;">
-                <img src="/storage/user/blank-profile.png" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Alice Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Female, 21</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-2 me-2" style="min-width: 18rem;">
-                <img src="/storage/user/profile1.jpg" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Jeremy Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Male, 22</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-2 me-2" style="min-width: 18rem;">
-                <img src="/storage/user/blank-profile.png" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Alice Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Female, 21</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-2 me-2" style="min-width: 18rem;">
-                <img src="/storage/user/profile1.jpg" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Jeremy Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Male, 22</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-2 me-2" style="min-width: 18rem;">
-                <img src="/storage/user/blank-profile.png" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h5>Alice Tyson</h5>
-                        <div class="thumb-border">
-                            <a href="#"><i class="bi bi-chat-dots-fill"></i></a>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <p class="card-label me-2">@lang('home.gender'), @lang('home.age'):</p>
-                        <p class="card-text">Female, 21</p>
-                    </div>
-                    <label class="card-label mb-2">@lang('home.hobby'):</label>
-                    <div class="d-flex">
-                        <p class="card-category1">Sports</p>
-                        <p class="card-category2 mx-3">Culinary</p>
-                        <p class="card-category3">Reading</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

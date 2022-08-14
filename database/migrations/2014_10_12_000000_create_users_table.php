@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture');
             $table->integer('register_price');
             $table->boolean('isVisible');
+            $table->boolean('isPay');
             $table->timestamps();
         });
     }

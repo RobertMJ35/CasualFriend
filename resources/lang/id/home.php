@@ -8,5 +8,6 @@
         'gender' => 'Jenis Kelamin',
         'age' => 'Umur',
         'hobby' => 'Hobi',
+        'not-found' => 'Data not Found'
     ];
 ?>

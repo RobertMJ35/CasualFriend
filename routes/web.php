@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FriendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,21 +20,31 @@ Route::get('/', [Controller::class, "onboarding"])->name('boarding');
 Route::get('/board', [Controller::class, "onboarding"]);
 Route::get('/board/{gender?}', [Controller::class, "onboarding"]);
 Route::get('/search', [Controller::class, "search"]);
-Route::get('/home/search', [Controller::class, "searchHome"]);
 
 Route::get('/login', [UserController::class, "login"])->name('login_page');
 Route::post('/login/auth', [UserController::class, "loginProcess"])->name('login');
+
 Route::get('/register', [UserController::class, "register"]);
 Route::post('/register/auth', [UserController::class, "registerProcess"])->name('register');
+
 Route::get('/register/profile', [UserController::class, "profile"]);
 Route::post('/register/profile/val', [UserController::class, "profileProcess"])->name('profile');
+// Route::get('/register/payment', [UserController::class, "payment"])->name('payment');
+// Route::post('/register/payment/process', [UserController::class, "paymentProcess"]);
+
+Route::get('/logout', [UserController::class, "logout"])->name('logout');
 
 Route::get('/home', [Controller::class, "homePage"])->name('home');
 Route::get('/home/{gender?}', [Controller::class, "homePage"]);
-Route::get('/logout', [UserController::class, "logout"])->name('logout');
+Route::get('/home/search', [Controller::class, "searchHome"]);
+
+Route::get('/setting', [Controller::class, "setting"])->name('setting');
+Route::post('/setting/save', [Controller::class, "saveChanges"]);
+Route::get('/setting/topup', [Controller::class, "addCoin"]);
+
 
 Route::get('/friend', [FriendController::class, "friendPage"])->name('friend');
-Route::get('/friend/{id}', [FriendController::class, "homePage"]);
+Route::get('/friend/{id}', [FriendController::class, "sendFriendReq"]);
 
 Route::get('/chat', function(){
     return view('chat');
@@ -47,9 +58,9 @@ Route::get('/avatar', function(){
     return view('avatar');
 });
 
-Route::get('/setting', function(){
-    return view('setting');
-});
+// Route::get('/setting', function(){
+//     return view('setting');
+// });
 
 Route::get('/lang/{locale}', function ($locale) {
     session()->put('locale', $locale);

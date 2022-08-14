@@ -37,5 +37,9 @@
         'language-placeholder' => 'Select your main languange',
         'location' => 'Location',
         'location-placeholder' => 'Input your current location..',
+        //PAYMENT
+        'payment' => 'Payment',
+        'pay' => 'PAY',
+        'payment-placeholder' => 'Input your payment..',
     ];
 ?>
