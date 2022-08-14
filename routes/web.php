@@ -29,8 +29,9 @@ Route::post('/register/auth', [UserController::class, "registerProcess"])->name(
 
 Route::get('/register/profile', [UserController::class, "profile"]);
 Route::post('/register/profile/val', [UserController::class, "profileProcess"])->name('profile');
-// Route::get('/register/payment', [UserController::class, "payment"])->name('payment');
-// Route::post('/register/payment/process', [UserController::class, "paymentProcess"]);
+
+Route::get('/register/payment', [UserController::class, "payment"]);
+Route::post('/register/payment/process', [UserController::class, "paymentProcess"])->name('payment');
 
 Route::get('/logout', [UserController::class, "logout"])->name('logout');
 

@@ -126,7 +126,7 @@
 
                 {{-- Submit button --}}
                 <div class="text-center py-5">
-                    <button type="submit" class="primary-button" href="/register/payment">@lang('account.register')</button>
+                    <button type="submit" class="primary-button" href="register/payment">@lang('account.register')</button>
                 </div>
             </form>
         </div>

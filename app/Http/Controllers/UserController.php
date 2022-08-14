@@ -96,11 +96,11 @@ class UserController extends Controller
         $user->isPay = 0;
         $user->save();
 
-        // $price = $request->register_price;
-        // session(['price' => $price]);
+        $data = ['price' => $request->register_price];
+        session(['data' => $data]);
 
-        return redirect()->route('login_page')->withToastSucess('Registed Successfully');
-        // return redirect('register/payment');
+        // return redirect()->route('login_page')->withSucess('Registed Successfully');
+        return redirect('register/payment')->with(['data' => $data]);
     }
 
     public function paymentProcess(Request $request)
@@ -110,7 +110,7 @@ class UserController extends Controller
             'payment' => 'required|min:100000'
         ]);
 
-        return redirect()->route('login_page')->withToastSucess('Registed Successfully');
+        return redirect()->route('login_page')->withSucess('Registed Successfully');
     }
 
     public function loginProcess(Request $request)
@@ -129,10 +129,10 @@ class UserController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         auth()->logout();
-        return redirect()->route('boarding')->withToastSuccess('Logged Out Successfully');
+        return redirect()->route('boarding')->withSuccess('Logged Out Successfully');
     }
 
     public function addCoin(){
