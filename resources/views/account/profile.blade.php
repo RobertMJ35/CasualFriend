@@ -38,7 +38,7 @@
 
     <div class="container-fluid p-5" style="background-color: var(--second);">
         <div class="container" style="width: 800px; background-color: var(--white); padding:0% 5% 0% 5%; border-radius: 40px;">
-            <form style="color: var(--black);" action="{{ route('profile') }}" method="post">
+            <form style="color: var(--black);" action="{{ route('profile') }}" method="post" enctype='multipart/form-data'>
                 @csrf
                 <h1 class="h1 text-center pt-5 pb-3">@lang('account.profile')</h1>
 

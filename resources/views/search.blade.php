@@ -15,12 +15,14 @@
     <div class="container d-flex flex-wrap px-5 mb-5">
         @foreach ($data as $item)
             <div class="card mb-4 me-3" style="width: 18rem;">
-                <img src="/storage/user/{{ $item->profile_picture }}" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
+                <a href="/login">
+                    <img src="/{{ $item->profile_picture }}" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
+                </a>
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between">
                         <h5>{{ $item->name }}</h5>
                         <div class="thumb-border">
-                            <a href="/friend/{{ $item->id }}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
+                            <a href="/login"><i class="bi bi-hand-thumbs-up-fill"></i></a>
                         </div>
                     </div>
                     <div class="d-flex">

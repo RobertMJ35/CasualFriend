@@ -34,15 +34,16 @@
         <div class="container setting-container mb-5">
             <div class="row px-5">
                 {{-- <div class="col-12 d-flex justify-content-center mt-4">
-                    <img src="/storage/user/profile1.jpg" alt="" class="profile-picture">
                 </div> --}}
-                <form action="/setting/save" method="POST">
+                <form action="/setting/save" method="POST" enctype='multipart/form-data'>
                     @csrf
-                    <div class="d-flex justify-content-center my-2 mt-4">
+                    <div class="d-flex justify-content-center align-items-center my-2 mt-4">
+                        <img src="{{ $user->profile_picture }}" alt="" class="profile-picture">
+                        <h2 class="mx-3 mb-0" style="color: var(--primary)"><i class="bi bi-arrow-right-circle-fill"></i></h2>
                         <img class="profile-preview" id="profile-preview">
                     </div>
                     <div class="col-12 d-flex justify-content-center mt-3 mb-4">
-                        <input class="form-control w-25" type="file" value={{ $user->profile_picture }} onchange="profilePreview(event)" id="profilePicture" name="profile_picture" accept="image/*">
+                        <input class="form-control w-25" type="file" value="" onchange="profilePreview(event)" id="profilePicture" name="profile_picture" accept="image/*">
                         {{-- <input class="form-control w-25" type="file" id="formFile"> --}}
                     </div>
                     <div class="col-12 mb-4">

@@ -76,6 +76,11 @@ class UserController extends Controller
             // 'profile_picture' => 'required|image',
         ]);
 
+        $file = $request->file('profile_picture');
+        $path = 'user/';
+        $file->move($path,$file->getClientOriginalName());
+        $path = '/'.$path.$file->getClientOriginalName();
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -90,19 +95,19 @@ class UserController extends Controller
         $user->mobile_number = $request->mobile_number;
         $user->language = $request->language;
         $user->location = $request->location;
-        $user->profile_picture = $request->profile_picture;
+        $user->profile_picture = $path;
         $user->register_price = $request->register_price;
         $user->isVisible = 0;
         $user->isPay = 0;
         $user->save();
 
-        // $data = ['price' => $request->register_price];
-        // session(['data' => $data]);
-        $userId = $user->id;
+        $data = ['price' => $request->register_price, 'id'=>$user->id];
+        session(['data' => $data]);
+        // $userId = $user->id;
 
         // return redirect()->route('login_page')->withSucess('Registed Successfully');
-        // return redirect("register/payment/$userId")->with(['data' => $data]);
-        return redirect("register/payment/$userId");
+        return redirect("register/payment/")->with(['data' => $data]);
+        // return redirect("register/payment/$userId");
     }
 
     public function paymentProcess(Request $request)
@@ -112,9 +117,9 @@ class UserController extends Controller
             'payment' => 'required'
         ]);
 
-        $user = User::find($request->id);
-        $id = $user->id;
+        $id = $request->id;
         $bill = $request->bill;
+        $user = User::find($id);
 
         if($bill==$request->payment){
             $user->isPay = 1;
@@ -122,13 +127,13 @@ class UserController extends Controller
             $user->save();
         }
         elseif($bill<$request->payment){
-            $user->coin += $request->payment - $bill;
+            $user->coin += ($request->payment - $bill);
             $user->isPay = 1;
             $user->isVisible = 1;
             $user->save();
         }
         else{
-            redirect('back')->withError("Payment must be equal of greater than '$bill'");
+            redirect()->route('payment_page')->withError("Payment must be equal of greater than '$bill'");
         }
 
         return redirect()->route('login_page')->withSucess('Registed Successfully');
@@ -187,12 +192,17 @@ class UserController extends Controller
 
     public function saveChanges(Request $req){
         $this->setLang();
+
         $user = User::find(Auth::user()->id);
         if($req->instagram != null){
             $user->instagram = $req->instagram;
         }
         if($req->profile_picture != null){
-            $user->profile_picture = $req->profile_picture;
+            $file = $req->file('profile_picture');
+            $path = 'user/';
+            $file->move($path,$file->getClientOriginalName());
+            $path = '/'.$path.$file->getClientOriginalName();
+            $user->profile_picture = $path;
         }
         $user->save();
 

@@ -31,7 +31,7 @@
         @foreach ($user as $item)
             @if(!(Auth::user()->id === $item->id))
                 <div class="card mb-4 me-3" style="width: 18rem;">
-                    <img src="/storage/user/{{ $item->profile_picture }}" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
+                    <img src="/{{ $item->profile_picture }}" class="card-img-top" alt="" style="height: 18rem; width: auto; object-fit:cover">
                     <div class="card-body">
                         <div class="card-title d-flex justify-content-between">
                             <h5>{{ $item->name }}</h5>

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 'mobile_number' => $dummy->phoneNumber(),
                 'language' => $dummy->randomElement(['Indonesia', 'English']),
                 'location' => $dummy->randomElement(['Indonesia', 'Korea', 'Japan']),
-                'profile_picture' => 'profile1.jpg',
+                'profile_picture' => 'user/profile1.jpg',
                 'register_price' => $dummy->numberBetween(100000, 125000),
                 'isVisible' => 1,
                 'isPay' => 1,
