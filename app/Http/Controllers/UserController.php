@@ -47,7 +47,7 @@ class UserController extends Controller
 
         $validateData["password"] = bcrypt($validateData["password"]);
         // $user = User::create($validateData);
-        $data = ['name' => $request->name, 'email' => $request->email, 'password' => $request->password];
+        $data = ['name' => $request->name, 'email' => $request->email, 'password' => $request->password, 'price' => rand(100000, 125000)];
         session(['data' => $data]);
 
         return redirect('register/profile');

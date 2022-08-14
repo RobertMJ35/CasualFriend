@@ -115,7 +115,7 @@
                     <input type="text" name="location" id="form-data-7" class="form-control"  placeholder="@lang('account.location-placeholder')" value={{ old('location') }}>
                 </div>
 
-                <h2>Rp. 100.000</h2>
+                <h2>Rp. {{ $data['price'] }}</h2>
 
                 @if($errors->any())
                     <div class="alert alert-danger">
