@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\FriendController;
 
 /*
@@ -56,13 +57,11 @@ Route::get('/chat', [ChatController::class, "chatPage"])->name('chat');
 Route::get('/chats/{id}', [ChatController::class, "chatDetail"]);
 Route::post('/chats/send', [ChatController::class, "sendMessage"]);
 
-// Route::get('/chat', function(){
-//     return view('chat');
-// });
+Route::get('/avatar', [AvatarController::class, "avatarPage"])->name('avatar');
 
-Route::get('/avatar', function(){
-    return view('avatar');
-});
+// Route::get('/avatar', function(){
+//     return view('avatar');
+// });
 
 Route::get('/lang/{locale}', function ($locale) {
     session()->put('locale', $locale);

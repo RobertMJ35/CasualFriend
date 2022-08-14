@@ -116,21 +116,23 @@
     {{-- AVATAR STORE --}}
     <h2 class="container ps-3 pb-2" style="color: var(--second)">@lang('avatar.avatar-store')</h2>
     <div class="container d-flex flex-wrap px-5 mb-5">
-        <div class="card mb-4 mx-1" style="width: 12rem;">
-            <img src="/storage/avatar/7.png" class="card-img-top" alt="" style="height: 10rem; width: auto; object-fit:cover">
-            <div class="card-body">
-                <div class="card-title d-flex justify-content-between mb-0">
-                    <h5>Space 1</h5>
-                </div>
-                <div class="d-flex">
-                    <p class="card-label me-2">@lang('avatar.price'):</p>
-                    <p class="card-text">150 <i class="bi bi-coin"></i></p>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a href="/avatar" class="primary-button text-center">BUY</a>
+        @foreach ($avatar as $item)
+            <div class="card mb-4 mx-1" style="width: 12rem;">
+                <img src="{{ $item->image }}" class="card-img-top" alt="" style="height: 10rem; width: auto; object-fit:cover">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between mb-0">
+                        <h5>{{ $item->name }}</h5>
+                    </div>
+                    <div class="d-flex">
+                        <p class="card-label me-2">@lang('avatar.price'):</p>
+                        <p class="card-text">{{ $item->price }} <i class="bi bi-coin"></i></p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/avatar" class="primary-button text-center">BUY</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
         <div class="card mb-4 mx-1" style="width: 12rem;">
             <img src="/storage/avatar/8.png" class="card-img-top" alt="" style="height: 10rem; width: auto; object-fit:cover">
             <div class="card-body">
