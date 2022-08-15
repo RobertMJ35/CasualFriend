@@ -285,6 +285,18 @@ a{
     background-color: var(--primary);
 }
 
+.bi-camera-video-fill{
+    color: var(--primary);
+    padding: 5px 8px 5px 8px;
+    border: solid 1.5pt var(--primary);
+    border-radius: 10px;
+}
+
+.bi-camera-video-fill:hover{
+    color: var(--white);
+    background-color: var(--primary);
+}
+
 .friend-req{
     background-color: var(--white);
     border-radius: 10px;

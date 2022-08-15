@@ -20,12 +20,4 @@ class ChatDetail extends Model
     public function senders(){
         return $this->belongsTo(User::class, 'sender', 'id');
     }
-
-    public function getChat($roomId){
-        return DB::table('chats')
-        ->join('users', 'users.id', '=', 'chat_details.sender')
-        ->where('chat_id', $roomId)
-        ->select('chats_details*', 'users.name', DB::raw(Auth::user()->id." as user_id") )
-        ->get();
-    }
 }

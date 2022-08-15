@@ -51,6 +51,7 @@ Route::get('/friend', [FriendController::class, "friendPage"])->name('friend');
 Route::get('/friend/{id}', [FriendController::class, "sendFriendReq"]);
 Route::get('/friend/acc/{id}', [FriendController::class, "acceptFriendReq"]);
 Route::get('/friend/rej/{id}', [FriendController::class, "rejectFriendReq"]);
+Route::get('/friend/can/{id}', [FriendController::class, "cancelFriendReq"]);
 Route::get('/friend/chat/{id}', [FriendController::class, "createChat"]);
 
 Route::get('/chat', [ChatController::class, "chatPage"])->name('chat');
@@ -58,10 +59,7 @@ Route::get('/chats/{id}', [ChatController::class, "chatDetail"]);
 Route::post('/chats/send', [ChatController::class, "sendMessage"]);
 
 Route::get('/avatar', [AvatarController::class, "avatarPage"])->name('avatar');
-
-// Route::get('/avatar', function(){
-//     return view('avatar');
-// });
+Route::post('/buyAvatar', [AvatarController::class, "buyAvatar"]);
 
 Route::get('/lang/{locale}', function ($locale) {
     session()->put('locale', $locale);

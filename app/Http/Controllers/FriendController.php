@@ -42,13 +42,19 @@ class FriendController extends Controller
             'isFriends' => 1
         ]);
 
-        return redirect()->back()->withToastSuccess('Friend Request Accepted!');
+        return redirect()->back()->withToastSuccess('Friend Invitation Accepted!');
     }
 
     public function rejectFriendReq(Request $request){
         Friend::find($request->id)->delete();
 
-        return redirect()->back()->withToastSuccess('Friend Request Rejected!');
+        return redirect()->back()->withToastSuccess('Friend Invitation Rejected!');
+    }
+
+    public function cancelFriendReq(Request $request){
+        Friend::find($request->id)->delete();
+
+        return redirect()->back()->withToastSuccess('Friend Request Cancelled!');
     }
 
     public function createChat(Request $request){

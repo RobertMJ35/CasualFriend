@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class MyAvatar extends Model
 {
+    protected $fillable = [
+        'userId',
+        'avatarId',
+    ];
+
     use HasFactory;
 
     public function user(){
         return $this->belongsTo(User::class, 'userId', 'id');
     }
 
-    public function avatar(){
-        return $this->belongsTo(Avatar::class);
+    public function avatars(){
+        return $this->belongsTo(Avatar::class, 'avatarId', 'id');
     }
 }

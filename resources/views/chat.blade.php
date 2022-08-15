@@ -13,27 +13,47 @@
                 <div class="scroll-chat-list ">
                     @foreach ($chat as $item)
                         {{-- @dump($item); --}}
-                        <a class="chat-list d-flex align-items-center p-2" href="/chats/{{ $item->id }}">
-                            <img src="{{ $item->persons2->profile_picture }}" alt="" class="pp-chat ms-2 me-3">
-                            <div class="col-7 align-items-center">
-                                <h5 class="pp-title">{{ $item->persons2->name }}</h5>
-                                <span class="last-chat">{{ $item->id }}</span>
-                            </div>
-                            <div class="col text-end ps-3">
-                                <p class="time-chat-list mb-4">
-                                    19.28
-                                </p>
-                                {{-- <span class="not-readed">5</span> --}}
-                            </div>
-                        </a>
+                        @if ($item->person1 == Auth::user()->id)
+                            <a class="chat-list d-flex align-items-center p-2" href="/chats/{{ $item->id }}">
+                                <img src="{{ $item->persons2->profile_picture }}" alt="" class="pp-chat ms-2 me-3">
+                                <div class="col-7 align-items-center">
+                                    <h5 class="pp-title">{{ $item->persons2->name }}</h5>
+                                    <span class="last-chat">{{ $item->id }}</span>
+                                </div>
+                                <div class="col text-end ps-3">
+                                    <p class="time-chat-list mb-2">
+                                        19.28
+                                    </p>
+                                    @if ($item->id==1)
+                                        <span class="not-readed">3</span>
+                                    @endif
+                                </div>
+                            </a>
+                        @elseif ($item->person2 == Auth::user()->id)
+                            <a class="chat-list d-flex align-items-center p-2" href="/chats/{{ $item->id }}">
+                                <img src="{{ $item->persons1->profile_picture }}" alt="" class="pp-chat ms-2 me-3">
+                                <div class="col-7 align-items-center">
+                                    <h5 class="pp-title">{{ $item->persons1->name }}</h5>
+                                    <span class="last-chat">{{ $item->id }}</span>
+                                </div>
+                                <div class="col text-end ps-3">
+                                    <p class="time-chat-list mb-2">
+                                        19.28
+                                    </p>
+                                    @if ($item->id==1)
+                                        <span class="not-readed">3</span>
+                                    @endif
+                                </div>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
             <div class="col-9 right-side-container px-0">
                 {{-- @dump($messages) --}}
                 <div class="header-chat d-flex align-items-center p-2">
-                    <img src="/storage/user/profile1.jpg" alt="" class="pp-chat ms-3">
-                    <h5 class="pp-title ms-3 mb-0"></h5>
+                    <img src="/user/1.jpg" alt="" class="pp-chat ms-3">
+                    <h5 class="pp-title ms-3 mb-0">Username</h5>
                 </div>
                 {{-- @dump($chatDetail); --}}
                 <div class="scroll-chat ps-3 pe-3 pt-3">

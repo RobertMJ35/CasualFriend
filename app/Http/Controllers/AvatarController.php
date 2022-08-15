@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Avatar;
 use App\Models\MyAvatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AvatarController extends Controller
 {
@@ -18,17 +21,33 @@ class AvatarController extends Controller
 
     public function avatarPage(){
         $this->setLang();
+        // $myAvatar = MyAvatar::all();
+        $myAvatar = MyAvatar::where('userId', Auth::user()->id)->get();
         $avatar = Avatar::all();
-        $myAvatar = MyAvatar::all();
+        $user = User::find(Auth::user()->id);
+        // $avatar = Avatar::where('id', MyAvatar::where('userId', '!=', Auth::user()->id))->get();
 
-        return view('avatar', ['avatar' => $avatar, 'myAvatar' => $myAvatar]);
+        return view('avatar', ['avatar' => $avatar, 'myAvatar' => $myAvatar, 'coin' => $user->coin]);
     }
 
-    public function buyAvatar(){
+    public function buyAvatar(Request $request){
         $this->setLang();
-        $avatar = Avatar::all();
-        $myAvatar = MyAvatar::all();
+        $user = User::find(Auth::user()->id);
+        $avatar = Avatar::find($request->avatarId);
 
-        return view('avatar', ['avatar' => $avatar, 'myAvatar' => $myAvatar]);
+        if($avatar->price > $user->coin){
+            return redirect()->route('avatar')->withToastError('Not Enough Coins!');
+        }
+
+        User::where('id', Auth::user()->id)->update([
+            'coin' => $user->coin - $avatar->price
+        ]);
+
+        MyAvatar::create([
+            'userId' => $user->id,
+            'avatarId' => $avatar->id,
+        ]);
+
+        return redirect()->route('avatar')->withToastSuccess('Purchased Successfully');
     }
 }
